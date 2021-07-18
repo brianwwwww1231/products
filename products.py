@@ -18,3 +18,5 @@ while True:
 								   # 我們可以不用那麼辛苦先開一個小清單[p]
 								   # 而是直接把我們剛剛輸入的name & price 直接透過.append加入進大清單[products]
 print(products)
+for p in products:
+	print(p[0], '的價格是', p[1])

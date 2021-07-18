@@ -26,11 +26,12 @@ for p in products:
 # 'abc' * 3 = 'abcabcabc'
 
 # 接下來我要做的事情是，我要把這個清單裡的東西一個一個叫出來，並且存出去在電腦裡！
-with open('products.csv', 'w') as f:
+with open('products.txt', 'w', encoding='utf-8') as f:
 	# open就是打開電腦檔案，電腦原先有沒有這個檔案不重要，有的話也會複寫過去
 	# 沒有的話也沒有關係，因為現在是寫入模式'w'，所以他會產生這個檔案
 	# as f 是什麼意思？複習一下就是「當作f」的意思
 	# 所以接下來如果我有任何要對'products.txt'這個檔案做任何動作，我就只需要叫動f就可以了
+	f.write('商品,價格\n')
 	for p in products:
 		f.write(p[0] + ',' + p[1] + '\n') # 字串是可以做加總的
 										  # p[]是小清單，不要忘記了

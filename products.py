@@ -3,8 +3,13 @@
 products = []
 with open('products.csv', 'r', encoding='utf-8') as f:
 	for line in f:# 在f中的每一行(line)，line是我自己取名的變數
+		if '商品,價格' in line:
+			continue
 		name, price = line.strip().split(',') 
-		# 這邊當然可以寫成：
+		products.append([name, price])
+print(products)
+
+# 這邊當然可以寫成：
 			# s = line.strip().split(',')
 			# name = s[0]
 			# price = s[1]
@@ -19,13 +24,11 @@ with open('products.csv', 'r', encoding='utf-8') as f:
 		# 他就讀取ramen跟120中間的','，並且從中間把它切開，再把兩者存回一個小清單當中[]，這樣就可以分別去讀取他們(ex. s[0])
 		# 用.spilt(',')來做分割 -> 意思是，在每一行(line)裡只要遇到','，就會被分割掉
 		# 所以換句話說，如果是用別的字串(ex. 'x')來分割，效果將有所不同
-		products.append([name, price])
-		# print(products) -> 這有什麼問題？ Ans:因為這個我是寫在for loop裡的，所以當我這個for loop跑了幾次，他就會印幾次
-print(products)
+
+# ------------------------------------------------------------------------------------------------
 
 # 我要建立一個清單，讓使用者可以持續輸入商品名稱
-#products = [] # 使用者輸入完的商品要丟到清單裡，所以理當你應該開個清單讓消費者輸入的內容裝進去
-
+# products = [] # 使用者輸入完的商品要丟到清單裡，所以理當你應該開個清單讓消費者輸入的內容裝進去
 while True:
 	name = input('請輸入商品名稱： ')
 	# products.append(name) -> 如果寫在這邊會有什麼問題？
@@ -43,12 +46,9 @@ while True:
 								   # 我們可以不用那麼辛苦先開一個小清單[p]
 								   # 而是直接把我們剛剛輸入的name & price 直接透過.append加入進大清單[products]
 print(products)
+
 for p in products:
 	print(p[0], '的價格是', p[1])
-
-# 字串(str)可以做 + 跟 ＊，但不能做- 跟 /
-# 'abc' + '123' = 'abc123'
-# 'abc' * 3 = 'abcabcabc'
 
 # 接下來我要做的事情是，我要把這個清單裡的東西一個一個叫出來，並且存出去在電腦裡！
 with open('products.csv', 'w', encoding='utf-8') as f:
@@ -62,3 +62,7 @@ with open('products.csv', 'w', encoding='utf-8') as f:
 										  # p[]是小清單，不要忘記了
 										  # 我們針對我們open的檔案(就是f)，我做出一個write的動作(.write)
 										  # \n 是換行符號喔！！
+
+# 字串(str)可以做 + 跟 ＊，但不能做- 跟 /
+# 'abc' + '123' = 'abc123'
+# 'abc' * 3 = 'abcabcabc'
